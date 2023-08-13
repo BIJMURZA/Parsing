@@ -1,6 +1,6 @@
 import requests
 from bs4 import BeautifulSoup
-import wikipedia
+from urllib.parse import quote
 
 api_key ='39864BB6D6F58565CFF414BD1280495D'
 
@@ -43,7 +43,8 @@ game_date[1] = game_date[1].replace(game_date[1], month_index)
 
 print('/'.join(game_date))
 
-url = 'https://en.wikipedia.org/wiki/Counter-Strike:_Global_Offensive'
+game_name = "Baldur's Gate 3"
+url = 'https://en.wikipedia.org/wiki/' + quote(game_name)
 response = requests.get(url)
 soup = BeautifulSoup(response.text, 'html.parser')
 
