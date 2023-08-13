@@ -47,13 +47,13 @@ url = 'https://en.wikipedia.org/wiki/Counter-Strike:_Global_Offensive'
 response = requests.get(url)
 soup = BeautifulSoup(response.text, 'html.parser')
 
-# Находим тег <th> с текстом "Genre(s)"
+
 genre_label = soup.find('th', string='Genre(s)')
 
-# Находим следующий тег <td> после тега <th> с жанрами
+
 genre_data = genre_label.find_next('td')
 
-# Извлекаем текст из тегов <a> внутри тега <td>
+
 genres = [a.get_text() for a in genre_data.find_all('a')]
 
 print(genres)  # Вывод: ['Tactical shooter', 'First-person shooter']
