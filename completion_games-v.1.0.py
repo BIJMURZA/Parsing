@@ -1,7 +1,7 @@
 import psycopg2
 import requests
 from bs4 import BeautifulSoup
-
+import yandex_translate
 
 def connection_db():
     connection = psycopg2.connect(dbname='games', user='baymurzaev',
@@ -41,8 +41,7 @@ def get_game_description(aid):
     response = requests.get(url, headers={'Accept-Language': 'ru-RU'})
     soup = BeautifulSoup(response.text, "lxml")
     game_description = soup.find('div', class_="game_description_snippet")
-    print(url)
-    return game_description.text
+    return ' '.join(game_description.text.split())
 
 
 api_key = '39864BB6D6F58565CFF414BD1280495D'
