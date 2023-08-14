@@ -3,7 +3,6 @@ import googletrans
 import requests
 from bs4 import BeautifulSoup
 from langdetect import detect
-from urllib.parse import quote
 
 def connection_db():
     connection = psycopg2.connect(dbname='games', user='baymurzaev',
